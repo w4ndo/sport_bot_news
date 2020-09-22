@@ -54,7 +54,7 @@ def main():
     driver = init()
     
     print('base_auth')
-    base_auth(driver)
+#     base_auth(driver)
     
     print('parse')
     df = parse(driver)
