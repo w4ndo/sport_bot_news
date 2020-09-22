@@ -13,7 +13,7 @@ def get_text_messages(message):
         bot.send_message(id_, "Привет, чем я могу тебе помочь?")
     elif 'как дела' in text.lower():
         bot.send_message(id_, "Нормально!")
-    elif 'новости' in text.lower:
+    elif 'новости' in text.lower():
         bot.send_message(id_,'Подождите, пожалуйста, пару минут, мне нужно собраться с мыслями.. ;)')
         df = parser_sport.main()
         for row in df.iterrows():
