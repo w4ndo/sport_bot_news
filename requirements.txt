@@ -1,2 +1,3 @@
 pytelegrambotapi
 selenium
+pandas

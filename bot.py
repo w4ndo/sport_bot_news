@@ -1,5 +1,6 @@
 import telebot
-import parser
+import pandas as pd
+import parser_sport
 
 
 bot = telebot.TeleBot('980764722:AAHN2MJcRGt8MTyezEL6L0-XvnJT8R8Qau8')
@@ -13,7 +14,7 @@ def get_text_messages(message):
     if 'как дела' in text.lower():
         bot.send_message(id_, "Нормально!")
     if text == 'новости':
-        df = parser.main()
+        df = parser_sport.main()
         for row in df.iterrows():
             message = row[1]['head'] + '\n'
             message += row[1]['time'] + '\n'
