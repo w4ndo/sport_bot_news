@@ -9,7 +9,7 @@ bot = telebot.TeleBot('980764722:AAHN2MJcRGt8MTyezEL6L0-XvnJT8R8Qau8')
 def get_text_messages(message):
     text = message.text
     id_ = message.from_user.id
-    if 'привет' in text.lower():
+    if 'привет' or 'здарова' in text.lower():
         bot.send_message(id_, "Привет, чем я могу тебе помочь?")
     elif 'как дела' in text.lower():
         bot.send_message(id_, "Нормально!")
