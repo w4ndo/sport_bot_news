@@ -50,8 +50,13 @@ def parse(driver) -> pd.DataFrame:
     
 
 def main():
+    print('init')
     driver = init()
+    
+    print('base_auth')
     base_auth(driver)
+    
+    print('parse')
     df = parse(driver)
     driver.close()
     return df
