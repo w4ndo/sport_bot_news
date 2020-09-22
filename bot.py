@@ -11,12 +11,12 @@ def get_text_messages(message):
     id_ = message.from_user.id
     if 'привет' in text.lower():
         bot.send_message(id_, "Привет, чем я могу тебе помочь?")
-    if 'как дела' in text.lower():
+    elif 'как дела' in text.lower():
         bot.send_message(id_, "Нормально!")
-    if text == 'новости':
+    elif text == 'новости':
         df = parser_sport.main()
         for row in df.iterrows():
-            message = row[1]['head'] + '\n'
+            message = row[1]['head'] + '\n'*2
             message += row[1]['time'] + '\n'
             message += row[1]['tags'] + '\n'
             message += row[1]['url'] + '\n'
