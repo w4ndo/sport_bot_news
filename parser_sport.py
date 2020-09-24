@@ -3,9 +3,10 @@ from time import sleep
 import pandas as pd
 from typing import List
 import os
+import sys
 
 
-def init(url: str = 'https://www.championat.com/'):
+def init_deploy(url: str = 'https://www.championat.com/'):
     # Init options:
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -17,7 +18,11 @@ def init(url: str = 'https://www.championat.com/'):
     # Start web_driver:
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(url)
-#     driver.maximize_window()
+    return driver
+
+def init_test(url: str = 'https://www.championat.com/'):
+    driver = webdriver.Chrome()
+    driver.get(url)
     return driver
 
 def base_auth(driver) -> None:
@@ -49,12 +54,12 @@ def parse(driver) -> pd.DataFrame:
     return df
     
 
-def main():
+def main(mode: str = 'deploy'):
     print('init')
-    driver = init()
-    
-    print('base_auth')
-#     base_auth(driver)
+    if mode == 'deploy':
+        driver = init_deploy()
+    elif mode == 'test':
+        driver = init_test()
     
     print('parse')
     df = parse(driver)
@@ -63,4 +68,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) == 2:
+        _, mode = sys.argv # []
+    else:
+        mode = 'deploy'
+    main(mode)

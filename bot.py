@@ -6,6 +6,12 @@ import parser_sport
 
 bot = telebot.TeleBot('980764722:AAHN2MJcRGt8MTyezEL6L0-XvnJT8R8Qau8')
 
+
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+    bot.reply_to(message, "Привет, я бот, который может парсить спортивные новости. Ура!")
+
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     text = message.text
